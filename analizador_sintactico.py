@@ -28,10 +28,11 @@ def p_expresion_for(t):
         print(t[3])
 
 def p_declaracion_concat(t):
-    'declaracion : CADENA CONCAT CADENA'
-    t[0] = t[1] + t[3]
+    '''
+    declaracion : CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA
+    '''
+    t[0] = t[1] + t[3] + t[5] + t[7] + t[9]  
     
-
 def p_declaracion_asignar(t):
     '''
     declaracion :  IDENTIFICADOR ASIGNAR expresion

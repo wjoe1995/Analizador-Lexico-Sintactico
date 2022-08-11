@@ -13,4 +13,4 @@ mostrar(1+2)                            (mostrara el resultado de la operacion d
 4 for "hola mundo"                      (devera mostrar la cantidad de veces que define en el 1er parametro (numero) la cadena que definamos despues de decir la funcion concat "CADENA")
 5 for "CocaCola"                        (devera mostrar la cantidad de veces que define en el 1er parametro (numero) la cadena que definamos despues de decir la funcion concat "CADENA")
 "hola" concat "mundo"                   (cocatenra todas las cadenas que se den)
-"Coca" concat "Cola" concat "me gusta"  (cocatenra todas las cadenas que se den)
+"hola" concat "como" concat "estas" concat "me gustaria" concat "conocerte"  (cocatenra todas las cadenas que se den)
