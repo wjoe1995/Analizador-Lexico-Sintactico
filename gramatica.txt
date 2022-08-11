@@ -1,0 +1,16 @@
+5+5
+2-2
+10*10
+10/6
+10%3
+8**2
+5+2+1-4
+a="hola mundo"                          (asigancion de una cadena)
+a                                       (devera mostrar el valor de a "hola mundo")
+mostrar(a)                              (otra manera de mostrar el valor de a)
+mostrar("hola")                         (mostrara la cadena o el texto que se le pase entre comillas)
+mostrar(1+2)                            (mostrara el resultado de la operacion descrita)
+4 for "hola mundo"                      (devera mostrar la cantidad de veces que define en el 1er parametro (numero) la cadena que definamos despues de decir la funcion concat "CADENA")
+5 for "CocaCola"                        (devera mostrar la cantidad de veces que define en el 1er parametro (numero) la cadena que definamos despues de decir la funcion concat "CADENA")
+"hola" concat "mundo"                   (cocatenra todas las cadenas que se den)
+"Coca" concat "Cola" concat "me gusta"  (cocatenra todas las cadenas que se den)
