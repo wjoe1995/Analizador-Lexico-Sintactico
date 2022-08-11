@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'rightASIGNARleftSUMARESTAleftMULTDIVrightCONCATMOSTRARleftFORASIGNAR CADENA COMDOB CONCAT CORDER CORIZQ DIV ENTERO FOR IDENTIFICADOR LLADER LLAIZQ MODULO MOSTRAR MULT PARDER PARIZQ POTENCIA RESTA SUMAdeclaracion :   MOSTRAR expresionexpresion : ENTERO  FOR  CADENAdeclaracion : CADENA CONCAT CADENA\n    declaracion :  IDENTIFICADOR ASIGNAR expresion\n                |  IDENTIFICADOR ASIGNAR CADENA\n    declaracion : expresion\n    expresion  :   expresion SUMA expresion\n                |   expresion RESTA expresion\n                |   expresion MULT expresion\n                |   expresion DIV expresion\n                |   expresion POTENCIA expresion\n                |   expresion MODULO expresion\n    \n    expresion  :  PARIZQ expresion PARDER\n                | LLAIZQ expresion LLADER\n                | CORIZQ expresion CORDER\n    \n    expresion : ENTERO\n    declaracion : COMDOB expresion COMDOBexpresion : IDENTIFICADOR'
+_lr_signature = 'rightASIGNARleftSUMARESTAleftMULTDIVrightCONCATMOSTRARleftFORASIGNAR CADENA COMDOB CONCAT CORDER CORIZQ DIV ENTERO FOR IDENTIFICADOR LLADER LLAIZQ MODULO MOSTRAR MULT PARDER PARIZQ POTENCIA RESTA SUMA\n    declaracion     :    MOSTRAR PARIZQ expresion PARDER\n                    |    MOSTRAR  PARIZQ CADENA PARDER\n    expresion : ENTERO  FOR  CADENAdeclaracion : CADENA CONCAT CADENA\n    declaracion :  IDENTIFICADOR ASIGNAR expresion\n                |  IDENTIFICADOR ASIGNAR CADENA\n    declaracion : expresion\n    expresion  :    expresion SUMA expresion\n                |   expresion RESTA expresion\n                |   expresion MULT expresion\n                |   expresion DIV expresion\n                |   expresion POTENCIA expresion\n                |   expresion MODULO expresion\n    \n    expresion  :  PARIZQ expresion PARDER\n                | LLAIZQ expresion LLADER\n                | CORIZQ expresion CORDER\n    \n    expresion : ENTERO\n    declaracion : COMDOB expresion COMDOBexpresion : IDENTIFICADOR'
     
-_lr_action_items = {'MOSTRAR':([0,],[2,]),'CADENA':([0,19,20,22,],[4,32,34,36,]),'IDENTIFICADOR':([0,2,6,8,9,10,13,14,15,16,17,18,20,],[5,12,12,12,12,12,12,12,12,12,12,12,12,]),'COMDOB':([0,7,12,21,26,27,28,29,30,31,36,37,38,39,],[6,-16,-18,35,-7,-8,-9,-10,-11,-12,-2,-13,-14,-15,]),'ENTERO':([0,2,6,8,9,10,13,14,15,16,17,18,20,],[7,7,7,7,7,7,7,7,7,7,7,7,7,]),'PARIZQ':([0,2,6,8,9,10,13,14,15,16,17,18,20,],[8,8,8,8,8,8,8,8,8,8,8,8,8,]),'LLAIZQ':([0,2,6,8,9,10,13,14,15,16,17,18,20,],[9,9,9,9,9,9,9,9,9,9,9,9,9,]),'CORIZQ':([0,2,6,8,9,10,13,14,15,16,17,18,20,],[10,10,10,10,10,10,10,10,10,10,10,10,10,]),'$end':([1,3,5,7,11,12,26,27,28,29,30,31,32,33,34,35,36,37,38,39,],[0,-6,-18,-16,-1,-18,-7,-8,-9,-10,-11,-12,-3,-4,-5,-17,-2,-13,-14,-15,]),'SUMA':([3,5,7,11,12,21,23,24,25,26,27,28,29,30,31,33,36,37,38,39,],[13,-18,-16,13,-18,13,13,13,13,-7,-8,-9,-10,13,13,13,-2,-13,-14,-15,]),'RESTA':([3,5,7,11,12,21,23,24,25,26,27,28,29,30,31,33,36,37,38,39,],[14,-18,-16,14,-18,14,14,14,14,-7,-8,-9,-10,14,14,14,-2,-13,-14,-15,]),'MULT':([3,5,7,11,12,21,23,24,25,26,27,28,29,30,31,33,36,37,38,39,],[15,-18,-16,15,-18,15,15,15,15,15,15,-9,-10,15,15,15,-2,-13,-14,-15,]),'DIV':([3,5,7,11,12,21,23,24,25,26,27,28,29,30,31,33,36,37,38,39,],[16,-18,-16,16,-18,16,16,16,16,16,16,-9,-10,16,16,16,-2,-13,-14,-15,]),'POTENCIA':([3,5,7,11,12,21,23,24,25,26,27,28,29,30,31,33,36,37,38,39,],[17,-18,-16,17,-18,17,17,17,17,-7,-8,-9,-10,17,17,17,-2,-13,-14,-15,]),'MODULO':([3,5,7,11,12,21,23,24,25,26,27,28,29,30,31,33,36,37,38,39,],[18,-18,-16,18,-18,18,18,18,18,-7,-8,-9,-10,18,18,18,-2,-13,-14,-15,]),'CONCAT':([4,],[19,]),'ASIGNAR':([5,],[20,]),'FOR':([7,],[22,]),'PARDER':([7,12,23,26,27,28,29,30,31,36,37,38,39,],[-16,-18,37,-7,-8,-9,-10,-11,-12,-2,-13,-14,-15,]),'LLADER':([7,12,24,26,27,28,29,30,31,36,37,38,39,],[-16,-18,38,-7,-8,-9,-10,-11,-12,-2,-13,-14,-15,]),'CORDER':([7,12,25,26,27,28,29,30,31,36,37,38,39,],[-16,-18,39,-7,-8,-9,-10,-11,-12,-2,-13,-14,-15,]),}
+_lr_action_items = {'MOSTRAR':([0,],[2,]),'CADENA':([0,11,20,21,23,],[5,27,35,37,39,]),'IDENTIFICADOR':([0,3,7,9,10,11,14,15,16,17,18,19,21,],[6,13,13,13,13,13,13,13,13,13,13,13,13,]),'COMDOB':([0,8,13,22,28,29,30,31,32,33,34,39,40,41,],[7,-17,-19,38,-14,-8,-9,-10,-11,-12,-13,-3,-15,-16,]),'ENTERO':([0,3,7,9,10,11,14,15,16,17,18,19,21,],[8,8,8,8,8,8,8,8,8,8,8,8,8,]),'PARIZQ':([0,2,3,7,9,10,11,14,15,16,17,18,19,21,],[3,11,3,3,3,3,3,3,3,3,3,3,3,3,]),'LLAIZQ':([0,3,7,9,10,11,14,15,16,17,18,19,21,],[9,9,9,9,9,9,9,9,9,9,9,9,9,]),'CORIZQ':([0,3,7,9,10,11,14,15,16,17,18,19,21,],[10,10,10,10,10,10,10,10,10,10,10,10,10,]),'$end':([1,4,6,8,13,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,],[0,-7,-19,-17,-19,-14,-8,-9,-10,-11,-12,-13,-4,-5,-6,-18,-3,-15,-16,-1,-2,]),'SUMA':([4,6,8,12,13,22,24,25,26,28,29,30,31,32,33,34,36,39,40,41,],[14,-19,-17,14,-19,14,14,14,14,-14,-8,-9,-10,-11,14,14,14,-3,-15,-16,]),'RESTA':([4,6,8,12,13,22,24,25,26,28,29,30,31,32,33,34,36,39,40,41,],[15,-19,-17,15,-19,15,15,15,15,-14,-8,-9,-10,-11,15,15,15,-3,-15,-16,]),'MULT':([4,6,8,12,13,22,24,25,26,28,29,30,31,32,33,34,36,39,40,41,],[16,-19,-17,16,-19,16,16,16,16,-14,16,16,-10,-11,16,16,16,-3,-15,-16,]),'DIV':([4,6,8,12,13,22,24,25,26,28,29,30,31,32,33,34,36,39,40,41,],[17,-19,-17,17,-19,17,17,17,17,-14,17,17,-10,-11,17,17,17,-3,-15,-16,]),'POTENCIA':([4,6,8,12,13,22,24,25,26,28,29,30,31,32,33,34,36,39,40,41,],[18,-19,-17,18,-19,18,18,18,18,-14,-8,-9,-10,-11,18,18,18,-3,-15,-16,]),'MODULO':([4,6,8,12,13,22,24,25,26,28,29,30,31,32,33,34,36,39,40,41,],[19,-19,-17,19,-19,19,19,19,19,-14,-8,-9,-10,-11,19,19,19,-3,-15,-16,]),'CONCAT':([5,],[20,]),'ASIGNAR':([6,],[21,]),'FOR':([8,],[23,]),'PARDER':([8,12,13,26,27,28,29,30,31,32,33,34,39,40,41,],[-17,28,-19,42,43,-14,-8,-9,-10,-11,-12,-13,-3,-15,-16,]),'LLADER':([8,13,24,28,29,30,31,32,33,34,39,40,41,],[-17,-19,40,-14,-8,-9,-10,-11,-12,-13,-3,-15,-16,]),'CORDER':([8,13,25,28,29,30,31,32,33,34,39,40,41,],[-17,-19,41,-14,-8,-9,-10,-11,-12,-13,-3,-15,-16,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'declaracion':([0,],[1,]),'expresion':([0,2,6,8,9,10,13,14,15,16,17,18,20,],[3,11,21,23,24,25,26,27,28,29,30,31,33,]),}
+_lr_goto_items = {'declaracion':([0,],[1,]),'expresion':([0,3,7,9,10,11,14,15,16,17,18,19,21,],[4,12,22,24,25,26,29,30,31,32,33,34,36,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,22 +27,23 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> declaracion","S'",1,None,None,None),
-  ('declaracion -> MOSTRAR expresion','declaracion',2,'p_declaracion_mosrar','analizador_sintactico.py',18),
-  ('expresion -> ENTERO FOR CADENA','expresion',3,'p_expresion_for','analizador_sintactico.py',22),
-  ('declaracion -> CADENA CONCAT CADENA','declaracion',3,'p_declaracion_concat','analizador_sintactico.py',28),
-  ('declaracion -> IDENTIFICADOR ASIGNAR expresion','declaracion',3,'p_declaracion_asignar','analizador_sintactico.py',34),
-  ('declaracion -> IDENTIFICADOR ASIGNAR CADENA','declaracion',3,'p_declaracion_asignar','analizador_sintactico.py',35),
-  ('declaracion -> expresion','declaracion',1,'p_declaracion_expre','analizador_sintactico.py',43),
-  ('expresion -> expresion SUMA expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',49),
-  ('expresion -> expresion RESTA expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',50),
-  ('expresion -> expresion MULT expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',51),
-  ('expresion -> expresion DIV expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',52),
-  ('expresion -> expresion POTENCIA expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',53),
-  ('expresion -> expresion MODULO expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',54),
-  ('expresion -> PARIZQ expresion PARDER','expresion',3,'p_expresion_grupo','analizador_sintactico.py',75),
-  ('expresion -> LLAIZQ expresion LLADER','expresion',3,'p_expresion_grupo','analizador_sintactico.py',76),
-  ('expresion -> CORIZQ expresion CORDER','expresion',3,'p_expresion_grupo','analizador_sintactico.py',77),
-  ('expresion -> ENTERO','expresion',1,'p_expresion_numero','analizador_sintactico.py',83),
-  ('declaracion -> COMDOB expresion COMDOB','declaracion',3,'p_declaracion_cadena','analizador_sintactico.py',88),
-  ('expresion -> IDENTIFICADOR','expresion',1,'p_expresion_nombre','analizador_sintactico.py',92),
+  ('declaracion -> MOSTRAR PARIZQ expresion PARDER','declaracion',4,'p_declaracion_mosrar','analizador_sintactico.py',19),
+  ('declaracion -> MOSTRAR PARIZQ CADENA PARDER','declaracion',4,'p_declaracion_mosrar','analizador_sintactico.py',20),
+  ('expresion -> ENTERO FOR CADENA','expresion',3,'p_expresion_for','analizador_sintactico.py',25),
+  ('declaracion -> CADENA CONCAT CADENA','declaracion',3,'p_declaracion_concat','analizador_sintactico.py',31),
+  ('declaracion -> IDENTIFICADOR ASIGNAR expresion','declaracion',3,'p_declaracion_asignar','analizador_sintactico.py',37),
+  ('declaracion -> IDENTIFICADOR ASIGNAR CADENA','declaracion',3,'p_declaracion_asignar','analizador_sintactico.py',38),
+  ('declaracion -> expresion','declaracion',1,'p_declaracion_expre','analizador_sintactico.py',46),
+  ('expresion -> expresion SUMA expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',52),
+  ('expresion -> expresion RESTA expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',53),
+  ('expresion -> expresion MULT expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',54),
+  ('expresion -> expresion DIV expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',55),
+  ('expresion -> expresion POTENCIA expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',56),
+  ('expresion -> expresion MODULO expresion','expresion',3,'p_expresion_operaciones','analizador_sintactico.py',57),
+  ('expresion -> PARIZQ expresion PARDER','expresion',3,'p_expresion_grupo','analizador_sintactico.py',78),
+  ('expresion -> LLAIZQ expresion LLADER','expresion',3,'p_expresion_grupo','analizador_sintactico.py',79),
+  ('expresion -> CORIZQ expresion CORDER','expresion',3,'p_expresion_grupo','analizador_sintactico.py',80),
+  ('expresion -> ENTERO','expresion',1,'p_expresion_numero','analizador_sintactico.py',86),
+  ('declaracion -> COMDOB expresion COMDOB','declaracion',3,'p_declaracion_cadena','analizador_sintactico.py',91),
+  ('expresion -> IDENTIFICADOR','expresion',1,'p_expresion_nombre','analizador_sintactico.py',95),
 ]

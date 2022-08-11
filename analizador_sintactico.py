@@ -16,11 +16,10 @@ nombres = {}
 
 def p_declaracion_mosrar(t):
     '''
-    declaracion :    MOSTRAR expresion
-                    |MOSTRAR CADENA
+    declaracion     :    MOSTRAR PARIZQ expresion PARDER
+                    |    MOSTRAR  PARIZQ CADENA PARDER
     '''
-    
-    t[0] = print(t[2])
+    t[0] = print(t[3])
 
 def p_expresion_for(t):
     'expresion : ENTERO  FOR  CADENA'
@@ -50,7 +49,7 @@ def p_declaracion_expre(t):
 
 def p_expresion_operaciones(t):
     '''
-    expresion  :   expresion SUMA expresion
+    expresion  :    expresion SUMA expresion
                 |   expresion RESTA expresion
                 |   expresion MULT expresion
                 |   expresion DIV expresion
