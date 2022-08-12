@@ -16,9 +16,10 @@ nombres = {}
 
 def p_declaracion_mosrar(t):
     '''
-    declaracion     :    MOSTRAR PARIZQ expresion PARDER #ejm: mostrar(a)
-                    |    MOSTRAR  PARIZQ CADENA PARDER   #ejm: mostrar("hola")
-    '''
+    declaracion     :    MOSTRAR PARIZQ expresion PARDER 
+                    |    MOSTRAR  PARIZQ CADENA PARDER   
+    ''' #ejm: mostrar(a)
+        #ejm: mostrar("hola")
     t[0] = print(t[3])
 
 def p_expresion_for(t):
@@ -30,32 +31,42 @@ def p_expresion_for(t):
 def p_declaracion_concat(t):
     '''
     declaracion : CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA
-    ''' #ejm: "hola" concat "mundo" concat "!" concat "como" concat "estas"
+    ''' 
+    #ejm: "hola" concat "mundo" concat "!" concat "como" concat "estas"
     t[0] = t[1] + t[3] + t[5] + t[7] + t[9]  
     
 def p_declaracion_asignar(t):
     '''
-    declaracion :  IDENTIFICADOR ASIGNAR expresion  #ejm: a = 4
-                |  IDENTIFICADOR ASIGNAR CADENA     #ejm: a = "hola"
+    declaracion :  IDENTIFICADOR ASIGNAR expresion  
+                |  IDENTIFICADOR ASIGNAR CADENA     
     '''
+    #ejm: a = 4
+    #ejm: a = "hola"
     if len(t) == 4:
         nombres[t[1]] = t[3]
     else:
         nombres[t[1]] = t[5]
 
 def p_declaracion_expre(t):
-    'declaracion : expresion' #ejm: 4,a,b
+    'declaracion : expresion' 
+    #ejm: 4,a,b
     t[0] = t[1]
 
 def p_expresion_operaciones(t):
     '''
-    expresion  :    expresion SUMA expresion        #ejm: 4 + 5
-                |   expresion RESTA expresion       #ejm: 4 - 5
-                |   expresion MULT expresion        #ejm: 4 * 5
-                |   expresion DIV expresion         #ejm: 4 / 5
-                |   expresion POTENCIA expresion    #ejm: 4 ** 5
-                |   expresion MODULO expresion      #ejm: 4 % 5
+    expresion  :    expresion SUMA expresion        
+                |   expresion RESTA expresion       
+                |   expresion MULT expresion        
+                |   expresion DIV expresion         
+                |   expresion POTENCIA expresion    
+                |   expresion MODULO expresion      
     '''
+    #ejm: 4 + 5
+    #ejm: 4 - 5
+    #ejm: 4 * 5
+    #ejm: 4 / 5
+    #ejm: 4 ** 5
+    #ejm: 4 % 5
     if t[2] == '+':
         t[0] = t[1] + t[3]
     elif t[2] == '-':
@@ -75,24 +86,30 @@ def p_expresion_operaciones(t):
 
 def p_expresion_grupo(t):
     '''
-    expresion  :  PARIZQ expresion PARDER   #ejm: (4)
-                | LLAIZQ expresion LLADER   #ejm: [4]
-                | CORIZQ expresion CORDER   #ejm: {4}
+    expresion  :  PARIZQ expresion PARDER   
+                | LLAIZQ expresion LLADER   
+                | CORIZQ expresion CORDER   
     '''
+    #ejm: (4)
+    #ejm: [4]
+    #ejm: {4}
     t[0] = t[2]
 
 def p_expresion_numero(t):
     '''
-    expresion : ENTERO #ejm: 4
+    expresion : ENTERO 
     '''
+    #ejm: 4
     t[0] = t[1]
 
 def p_declaracion_cadena(t):
-    'declaracion : COMDOB expresion COMDOB' #ejm: "hola"
+    'declaracion : COMDOB expresion COMDOB' 
+    #ejm: "hola"
     t[0] = t[2]
 
 def p_expresion_nombre(t):
-    'expresion : IDENTIFICADOR' #ejm: a,b,c
+    'expresion : IDENTIFICADOR' 
+    #ejm: a,b,c
     try:
         t[0] = nombres[t[1]]
     except LookupError:
