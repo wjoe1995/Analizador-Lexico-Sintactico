@@ -63,30 +63,30 @@ def t_ENTERO(t):
     t.value = int(t.value)
     return t
 
-def t_IDENTIFICADOR(t):
+def t_IDENTIFICADOR(t):  # identificador (nombre de todas las palabras reservadas y simbolos)
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     return t
 
-def t_CADENA(t):
+def t_CADENA(t): #expresion regular par identificar una cadena de texto entre " "
     r'\"?(\w+ \ *\w*\d* \ *)\"?'
     return t
 
-def t_newline(t):
+def t_newline(t): #expresion regular para identificar un salto de linea
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-def t_comments(t):
+def t_comments(t): #expresion regular para identificar un comentario de varias lineas /* */
     r'/\*(.|\n)*?\*/'
     t.lexer.lineno += t.value.count('\n')
     print("Comentario de multiple linea")
 
-def t_comments_ONELine(t):
+def t_comments_ONELine(t): #expresion regular para identificar un comentario de una linea //
     r'\/\/(.)*\n'
     t.lexer.lineno += 1
     print("Comentario de una linea")
 t_ignore =' \t'
 
-def t_error( t):
+def t_error( t): #manejo de errores
     global resultado_lexema
     estado = "** Token no valido en la Linea {:4} Valor {:16} Posicion {:4}".format(str(t.lineno), str(t.value),
                                                         str(t.lexpos))
@@ -113,7 +113,7 @@ def prueba(data):
 # instanciamos el analizador lexico
 analizador = lex.lex()
 
-'''if __name__ == '__main__':
+'''if __name__ == '__main__': #prueba de ingreso para probar el analizador lexico elimine las comillas
     while True:
         data = input("ingrese: ")
         prueba(data)

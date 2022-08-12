@@ -6,8 +6,8 @@ from analizador_lexico import analizador
 resultado_gramatica = []
 
 precedence = (
-    ('right','ASIGNAR'),
-    ('left', 'SUMA', 'RESTA'),
+    ('right','ASIGNAR'), #forma por donde se evalua la expresion eje: a = b + c
+    ('left', 'SUMA', 'RESTA'), #forma por donde se evalua la expresion eje: a + b
     ('left', 'MULT', 'DIV'),
     ('right', 'CONCAT', 'MOSTRAR',),
     ('left', 'FOR',),
@@ -16,13 +16,13 @@ nombres = {}
 
 def p_declaracion_mosrar(t):
     '''
-    declaracion     :    MOSTRAR PARIZQ expresion PARDER
-                    |    MOSTRAR  PARIZQ CADENA PARDER
+    declaracion     :    MOSTRAR PARIZQ expresion PARDER #ejm: mostrar(a)
+                    |    MOSTRAR  PARIZQ CADENA PARDER   #ejm: mostrar("hola")
     '''
     t[0] = print(t[3])
 
 def p_expresion_for(t):
-    'expresion : ENTERO  FOR  CADENA'
+    'expresion : ENTERO  FOR  CADENA' #ejm: 4 for "hola"
     t[0] = t[1]
     for i in range(t[1]):
         print(t[3])
@@ -30,13 +30,13 @@ def p_expresion_for(t):
 def p_declaracion_concat(t):
     '''
     declaracion : CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA
-    '''
+    ''' #ejm: "hola" concat "mundo" concat "!" concat "como" concat "estas"
     t[0] = t[1] + t[3] + t[5] + t[7] + t[9]  
     
 def p_declaracion_asignar(t):
     '''
-    declaracion :  IDENTIFICADOR ASIGNAR expresion
-                |  IDENTIFICADOR ASIGNAR CADENA
+    declaracion :  IDENTIFICADOR ASIGNAR expresion  #ejm: a = 4
+                |  IDENTIFICADOR ASIGNAR CADENA     #ejm: a = "hola"
     '''
     if len(t) == 4:
         nombres[t[1]] = t[3]
@@ -44,18 +44,17 @@ def p_declaracion_asignar(t):
         nombres[t[1]] = t[5]
 
 def p_declaracion_expre(t):
-    'declaracion : expresion'
-    # print("Resultado: " + str(t[1]))
+    'declaracion : expresion' #ejm: 4,a,b
     t[0] = t[1]
 
 def p_expresion_operaciones(t):
     '''
-    expresion  :    expresion SUMA expresion
-                |   expresion RESTA expresion
-                |   expresion MULT expresion
-                |   expresion DIV expresion
-                |   expresion POTENCIA expresion
-                |   expresion MODULO expresion
+    expresion  :    expresion SUMA expresion        #ejm: 4 + 5
+                |   expresion RESTA expresion       #ejm: 4 - 5
+                |   expresion MULT expresion        #ejm: 4 * 5
+                |   expresion DIV expresion         #ejm: 4 / 5
+                |   expresion POTENCIA expresion    #ejm: 4 ** 5
+                |   expresion MODULO expresion      #ejm: 4 % 5
     '''
     if t[2] == '+':
         t[0] = t[1] + t[3]
@@ -76,24 +75,24 @@ def p_expresion_operaciones(t):
 
 def p_expresion_grupo(t):
     '''
-    expresion  :  PARIZQ expresion PARDER
-                | LLAIZQ expresion LLADER
-                | CORIZQ expresion CORDER
+    expresion  :  PARIZQ expresion PARDER   #ejm: (4)
+                | LLAIZQ expresion LLADER   #ejm: [4]
+                | CORIZQ expresion CORDER   #ejm: {4}
     '''
     t[0] = t[2]
 
 def p_expresion_numero(t):
     '''
-    expresion : ENTERO
+    expresion : ENTERO #ejm: 4
     '''
     t[0] = t[1]
 
 def p_declaracion_cadena(t):
-    'declaracion : COMDOB expresion COMDOB'
+    'declaracion : COMDOB expresion COMDOB' #ejm: "hola"
     t[0] = t[2]
 
 def p_expresion_nombre(t):
-    'expresion : IDENTIFICADOR'
+    'expresion : IDENTIFICADOR' #ejm: a,b,c
     try:
         t[0] = nombres[t[1]]
     except LookupError:
