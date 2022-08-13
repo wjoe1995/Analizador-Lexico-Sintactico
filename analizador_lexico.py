@@ -113,9 +113,9 @@ def prueba(data):
 # instanciamos el analizador lexico
 analizador = lex.lex()
 
-if __name__ == '__main__': #prueba de ingreso para probar el analizador lexico elimine las comillas
+'''if __name__ == '__main__': #prueba de ingreso para probar el analizador lexico elimine las comillas
     while True:
         data = input("ingrese: ")
         prueba(data)
-        print(resultado_lexema)
+        print(resultado_lexema)'''
         

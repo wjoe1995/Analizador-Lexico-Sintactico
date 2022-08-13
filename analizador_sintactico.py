@@ -9,36 +9,38 @@ precedence = (
     ('right','ASIGNAR'), #forma por donde se evalua la expresion eje: a = b + c
     ('left', 'SUMA', 'RESTA'), #forma por donde se evalua la expresion eje: a + b
     ('left', 'MULT', 'DIV'),
-    ('right', 'CONCAT', 'MOSTRAR',),
-    ('left', 'FOR',),
+    ('right', 'MOSTRAR',),
+    ('left', 'FOR', 'CONCAT',),
 )
 nombres = {}
 
 def p_declaracion_mosrar(t):
     '''
-    declaracion     :    MOSTRAR PARIZQ expresion PARDER 
-                    |    MOSTRAR  PARIZQ CADENA PARDER   
+    declaracion     :    MOSTRAR  PARIZQ expresion PARDER 
+                    |    MOSTRAR  PARIZQ CADENA PARDER 
     ''' #ejm: mostrar(a)
         #ejm: mostrar("hola")
     t[0] = print(t[3])
+    
 
 def p_expresion_for(t):
-    'expresion : ENTERO  FOR  CADENA' #ejm: 4 for "hola"
+    'expresion : ENTERO  FOR  CADENA'
+    #ejm: 4 for "hola"
     t[0] = t[1]
     for i in range(t[1]):
         print(t[3])
 
-def p_declaracion_concat(t):
+def p_expresion_concat(t):
     '''
-    declaracion : CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA CONCAT CADENA
+    expresion   :  expresion  CONCAT  expresion 
     ''' 
-    #ejm: "hola" concat "mundo" concat "!" concat "como" concat "estas"
-    t[0] = t[1] + t[3] + t[5] + t[7] + t[9]  
-    
+    if t[2] == 'concat':
+        t[0] = t[1] + t[3]
+        
 def p_declaracion_asignar(t):
     '''
     declaracion :  IDENTIFICADOR ASIGNAR expresion  
-                |  IDENTIFICADOR ASIGNAR CADENA     
+                |  IDENTIFICADOR ASIGNAR CADENA
     '''
     #ejm: a = 4
     #ejm: a = "hola"
@@ -46,9 +48,14 @@ def p_declaracion_asignar(t):
         nombres[t[1]] = t[3]
     else:
         nombres[t[1]] = t[5]
+        
+
 
 def p_declaracion_expre(t):
-    'declaracion : expresion' 
+    '''
+    declaracion : expresion
+                | CADENA
+    ''' 
     #ejm: 4,a,b
     t[0] = t[1]
 
@@ -102,13 +109,20 @@ def p_expresion_numero(t):
     #ejm: 4
     t[0] = t[1]
 
-def p_declaracion_cadena(t):
-    'declaracion : COMDOB expresion COMDOB' 
+def p_expresion_cadena(t):
+    '''
+    expresion   : COMDOB CADENA COMDOB
+    '''  
     #ejm: "hola"
-    t[0] = t[2]
+    t[0] = t[1]
 
+    
+
+    
 def p_expresion_nombre(t):
-    'expresion : IDENTIFICADOR' 
+    '''
+    expresion : IDENTIFICADOR
+    ''' 
     #ejm: a,b,c
     try:
         t[0] = nombres[t[1]]
