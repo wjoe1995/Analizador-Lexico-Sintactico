@@ -33,31 +33,45 @@ def p_expresion_for(t):
 def p_expresion_concat(t):
     '''
     expresion   :  expresion  CONCAT  expresion 
+                |  expresion  CONCAT  CADENA
+                |  CADENA  CONCAT  expresion
+                |  CADENA  CONCAT  CADENA
     ''' 
-    if t[2] == 'concat':
+    # a= "hola" b= "como"
+    #ejm: a + b
+    #ejm: a + "como estas"
+    #ejm: "hola" + b
+    #ejm: "hola" + "como estas"
+    if len(t) == 4:
         t[0] = t[1] + t[3]
+    elif len(t) == 3:
+        t[0] = t[1] + t[2]
+    elif len(t) == 2:
+        t[0] = t[1]
+    else:
+        t[0] = t[2]
         
 def p_declaracion_asignar(t):
     '''
     declaracion :  IDENTIFICADOR ASIGNAR expresion  
-                |  IDENTIFICADOR ASIGNAR CADENA
+                |  IDENTIFICADOR ASIGNAR CADENA 
     '''
     #ejm: a = 4
-    #ejm: a = "hola"
+    #ejm: a = "hola como estas me gustaria"    
     if len(t) == 4:
         nombres[t[1]] = t[3]
     else:
         nombres[t[1]] = t[5]
-        
-
-
+    
 def p_declaracion_expre(t):
     '''
     declaracion : expresion
                 | CADENA
     ''' 
     #ejm: 4,a,b
+    #ejm: "hola"
     t[0] = t[1]
+    
 
 def p_expresion_operaciones(t):
     '''
@@ -114,11 +128,8 @@ def p_expresion_cadena(t):
     expresion   : COMDOB CADENA COMDOB
     '''  
     #ejm: "hola"
-    t[0] = t[1]
+    t[0] = t[2]
 
-    
-
-    
 def p_expresion_nombre(t):
     '''
     expresion : IDENTIFICADOR

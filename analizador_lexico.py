@@ -68,7 +68,7 @@ def t_IDENTIFICADOR(t):  # identificador (nombre de todas las palabras reservada
     return t
 
 def t_CADENA(t): #expresion regular par identificar una cadena de texto entre " "
-    r'\"?(\w+ \ *\w*\d* \ *)\"?'
+    r'\"?(\w+\ *\w*\d*\ *)\"?'
     return t
 
 def t_newline(t): #expresion regular para identificar un salto de linea
